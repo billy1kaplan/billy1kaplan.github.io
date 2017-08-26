@@ -16,7 +16,6 @@ def listen_handler(base, options)
   proc do |modified, added, removed|
     t = Time.now
     c = modified + added + removed
-    n = c.length
     relative_paths = c.map{ |p| Pathname.new(p).relative_path_from(base).to_s }
     print Jekyll.logger.message("Regenerating:", "#{relative_paths.join(", ")} changed... ")
     begin
